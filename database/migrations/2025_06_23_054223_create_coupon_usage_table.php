@@ -6,21 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('coupon_usage', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('coupon_id')->constrained()->onDelete('cascade');
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->decimal('discount_amount', 10, 2);
+            $table->timestamp('created_at');
+
+            $table->unique(['coupon_id', 'order_id']);
+            $table->index(['customer_id', 'coupon_id']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('coupon_usage');
     }
