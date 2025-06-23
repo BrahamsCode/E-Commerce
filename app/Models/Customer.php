@@ -10,8 +10,15 @@ class Customer extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'phone', 'document_type', 'document_number',
-        'company_name', 'company_ruc', 'billing_address', 'shipping_address'
+        'name',
+        'email',
+        'phone',
+        'document_type',
+        'document_number',
+        'company_name',
+        'company_ruc',
+        'billing_address',
+        'shipping_address'
     ];
 
     public function orders()

@@ -10,10 +10,26 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'description', 'short_description', 'sku',
-        'price', 'compare_price', 'stock', 'min_stock', 'stock_status',
-        'category_id', 'brand_id', 'specifications', 'weight', 'dimensions',
-        'is_featured', 'is_active', 'sort_order', 'meta_title', 'meta_description'
+        'name',
+        'slug',
+        'description',
+        'short_description',
+        'sku',
+        'price',
+        'compare_price',
+        'stock',
+        'min_stock',
+        'stock_status',
+        'category_id',
+        'brand_id',
+        'specifications',
+        'weight',
+        'dimensions',
+        'is_featured',
+        'is_active',
+        'sort_order',
+        'meta_title',
+        'meta_description'
     ];
 
     protected $casts = [
@@ -84,8 +100,8 @@ class Product extends Model
     {
         return $query->where(function ($q) use ($term) {
             $q->where('name', 'ILIKE', "%{$term}%")
-              ->orWhere('description', 'ILIKE', "%{$term}%")
-              ->orWhere('sku', 'ILIKE', "%{$term}%");
+                ->orWhere('description', 'ILIKE', "%{$term}%")
+                ->orWhere('sku', 'ILIKE', "%{$term}%");
         });
     }
 

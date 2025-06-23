@@ -10,10 +10,21 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_number', 'customer_id', 'status', 'subtotal', 'tax_amount',
-        'discount_amount', 'total_amount', 'customer_data', 'billing_address',
-        'shipping_address', 'notes', 'admin_notes', 'whatsapp_sent_at',
-        'whatsapp_message_id', 'created_by'
+        'order_number',
+        'customer_id',
+        'status',
+        'subtotal',
+        'tax_amount',
+        'discount_amount',
+        'total_amount',
+        'customer_data',
+        'billing_address',
+        'shipping_address',
+        'notes',
+        'admin_notes',
+        'whatsapp_sent_at',
+        'whatsapp_message_id',
+        'created_by'
     ];
 
     protected $casts = [
