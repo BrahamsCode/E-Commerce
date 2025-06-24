@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'whatsapp' => [
+        'number' => env('WHATSAPP_NUMBER', '51918887860'),
+        'api_url' => env('WHATSAPP_API_URL'),
+        'token' => env('WHATSAPP_TOKEN'),
+    ],
+
 ];
