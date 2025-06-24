@@ -2,16 +2,26 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Brand;
 use Illuminate\Database\Seeder;
 
 class BrandSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        $brands = [
+            ['name' => 'Samsung', 'slug' => 'samsung'],
+            ['name' => 'Apple', 'slug' => 'apple'],
+            ['name' => 'Xiaomi', 'slug' => 'xiaomi'],
+            ['name' => 'LG', 'slug' => 'lg'],
+            ['name' => 'Sony', 'slug' => 'sony'],
+            ['name' => 'HP', 'slug' => 'hp'],
+            ['name' => 'Dell', 'slug' => 'dell'],
+            ['name' => 'Lenovo', 'slug' => 'lenovo'],
+        ];
+
+        foreach ($brands as $brand) {
+            Brand::create(array_merge($brand, ['is_active' => true]));
+        }
     }
 }

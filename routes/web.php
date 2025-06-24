@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 
 // Frontend Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -88,4 +89,18 @@ Route::prefix('admin')->middleware(['auth', 'employee'])->group(function () {
     Route::get('/reportes/ventas', [DashboardController::class, 'salesReport'])->name('admin.reports.sales');
     Route::get('/reportes/productos', [DashboardController::class, 'productsReport'])->name('admin.reports.products');
     Route::get('/reportes/clientes', [DashboardController::class, 'customersReport'])->name('admin.reports.customers');
+});
+
+Route::middleware('guest')->group(function () {
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AuthController::class, 'login']);
+    Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [AuthController::class, 'register']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/profile/edit', function() {
+        return view('profile.edit');
+    })->name('profile.edit');
 });
